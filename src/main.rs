@@ -1,9 +1,12 @@
-use std::io::stdin;
-
 struct Board {
     size: i32
 }
 
+impl std::fmt::Display for Board {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "super test")
+    }
+}
 
 fn main() {
     let size: i32 = std::env::args()
@@ -12,12 +15,12 @@ fn main() {
     
     let board = Board { size };
 
-    for elem in 0..10 {
+    for _ in 0..1 {
         let mut player_move = String::new();
-        stdin().read_line(&mut player_move).expect("Please enter a move");
+        std::io::stdin().read_line(&mut player_move).expect("Please enter a move");
 
         println!("{}", player_move);
     }
 
-    println!("{}", board.size);
+    println!("{}: {}", board, board.size);
 }
